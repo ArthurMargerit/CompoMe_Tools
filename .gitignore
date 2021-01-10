@@ -11,3 +11,5 @@ CMakeFiles
 **/Makefile
 build
 lib/*
+swig_lib/*
+swig_src/*

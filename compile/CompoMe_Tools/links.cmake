@@ -18,8 +18,8 @@ include("/home/ruhtra/compo/Test/gen/cpp_before/CompoMe/compile/CompoMe/Ext_link
 
 
 
-list(APPEND _links_dir "-L/home/ruhtra/compo/Test/gen/cpp_before/CompoMe_Swig/lib")
+list(APPEND _links_dir "-L/home/ruhtra/compo/build/CompoMe_Swig/lib")
 list(APPEND _links_lib "CompoMe_Swig")
-include("/home/ruhtra/compo/Test/gen/cpp_before/CompoMe_Swig/compile/CompoMe_Swig/Ext_links.cmake" OPTIONAL)
+include("/home/ruhtra/compo/build/CompoMe_Swig/compile/CompoMe_Swig/Ext_links.cmake" OPTIONAL)
 
 

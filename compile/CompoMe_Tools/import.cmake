@@ -25,8 +25,8 @@ include("/home/ruhtra/compo/Test/gen/cpp_before/CompoMe/compile/CompoMe/Ext_impo
 
 
 ###############################################################################
-list(APPEND _include_directories      "/home/ruhtra/compo/Test/gen/cpp_before/CompoMe_Swig/inc")
-list(APPEND _include_directories_swig "/home/ruhtra/compo/Test/gen/cpp_before/CompoMe_Swig/swig")
-include("/home/ruhtra/compo/Test/gen/cpp_before/CompoMe_Swig/compile/CompoMe_Swig/Ext_import.cmake" OPTIONAL)
+list(APPEND _include_directories      "/home/ruhtra/compo/build/CompoMe_Swig/inc")
+list(APPEND _include_directories_swig "/home/ruhtra/compo/build/CompoMe_Swig/swig")
+include("/home/ruhtra/compo/build/CompoMe_Swig/compile/CompoMe_Swig/Ext_import.cmake" OPTIONAL)
 
 

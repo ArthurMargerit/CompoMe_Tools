@@ -24,6 +24,7 @@ src/Components/CompoMe/Config/DataProvider_AccessData_access_function.cpp)
 
 set(inc_file inc/Types/CompoMe/Config/Result_state.hpp 
 inc/Data/CompoMe_Tools.hpp 
+inc/Data/CompoMe_Tools_template.hpp 
 inc/Structs/CompoMe/Config/Result_get.hpp 
 inc/Structs/CompoMe/Config/Result_get_fac.hpp 
 inc/Structs/CompoMe/Config/Result_get_builder.hpp 

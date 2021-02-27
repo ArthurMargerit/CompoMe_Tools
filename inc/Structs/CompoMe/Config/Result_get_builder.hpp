@@ -2,38 +2,52 @@
 
 #include "Structs/CompoMe/Config/Result_get.hpp"
 
+
 #include <memory>
 
-namespace CompoMe {
 
-namespace Config {
+
+namespace CompoMe{
+
+namespace Config{
+
+
 
 class Result_get_builder {
 
-public:
+ public:
   Result_get_builder();
-  virtual ~Result_get_builder();
+   virtual ~Result_get_builder();
 
-  // setter
+ // setter
+   
 
-  Result_get_builder &set_state(const CompoMe::Config::Result_state &p_state);
+  Result_get_builder& set_state(const CompoMe::Config::Result_state& p_state);
+   
 
-  Result_get_builder &set_result(const CompoMe::String &p_result);
+  Result_get_builder& set_result(const CompoMe::String& p_result);
+   
 
-  // build
-  Result_get build();
-  Result_get *build_p();
-  std::shared_ptr<Result_get> build_sp();
+ // build
+   Result_get build();
+   Result_get* build_p();
+   std::shared_ptr<Result_get> build_sp();
 
-protected:
-  void asign(Result_get &p_name);
 
-private:
-  CompoMe::Config::Result_state state;
+ protected:
+   void asign(Result_get& p_name);
 
-  CompoMe::String result;
+ private:
+   
+ CompoMe::Config::Result_state state ;
+ 
+ CompoMe::String result ;
+ 
+
 };
 
-} // namespace Config
 
-} // namespace CompoMe
+} //CompoMe
+
+} //Config
+

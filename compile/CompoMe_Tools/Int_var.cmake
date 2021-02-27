@@ -1,4 +1,4 @@
-find_package(Readline)
+find_package(Readline QUIET)
 if(${READLINE_FOUND})
   LIST(APPEND src_file "src/CompoMe/Tools/C_readline_rl.cpp")
 else()

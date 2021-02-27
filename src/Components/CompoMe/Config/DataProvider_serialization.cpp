@@ -1,6 +1,8 @@
+#include "CompoMe/Log.hpp"
 #include "Components/CompoMe/Config/DataProvider.hpp"
 #include "Serialization_context.hpp"
-#include <iostream>
+#include <cstdlib>
+#include <string>
 
 namespace CompoMe {
 
@@ -55,9 +57,8 @@ std::ostream &DataProvider::to_stream_provide(
 /////////////////////////////////////////////////////////////////////////////
 //                            LOAD/SAVE                                    //
 /////////////////////////////////////////////////////////////////////////////
-std::ostream &
-DataProvider::to_stream(std::ostream &os,
-                        CompoMe::Serialization_context_export &p_ctx) const {
+void DataProvider::to_stream(
+    std::ostream &os, CompoMe::Serialization_context_export &p_ctx) const {
   os << "{";
   os << "addr:" << (void *)this;
   p_ctx.declare(this);
@@ -67,14 +68,14 @@ DataProvider::to_stream(std::ostream &os,
 
   this->to_stream_provide(os, p_ctx);
   os << '}';
-  return os;
+  //    return os;
 }
 
 std::istream &DataProvider::from_stream_provide(
     std::istream &is, CompoMe::Serialization_context_import &p_ctx) {
   char l_c = is.get();
   if (l_c != '{') {
-    std::cerr << "Wrong start: '" << l_c << "' != '{'";
+    C_ERROR("Wrong start: '", l_c, "' != '{'");
     throw "Wrong start: '"
           "' != '{'";
   }
@@ -89,8 +90,7 @@ std::istream &DataProvider::from_stream_provide(
       break;
 
     default:
-      std::cerr << "wrong attribute: \"" << args
-                << "\" not in data DataProvider";
+      C_ERROR("wrong attribute: \"", args, "\" not in data DataProvider");
       throw "wrong attribute: \"" + args + "\" not in provide DataProvider";
       break;
     }
@@ -106,7 +106,7 @@ DataProvider::from_stream_data(std::istream &is,
                                CompoMe::Serialization_context_import &p_ctx) {
   char l_c = is.get();
   if (l_c != '{') {
-    std::cerr << "Wrong start: '" << l_c << "' != '{'";
+    C_ERROR("Wrong start: '", l_c, "' != '{'");
     throw "Wrong start: '"
           "' != '{'";
   }
@@ -118,8 +118,7 @@ DataProvider::from_stream_data(std::istream &is,
     switch (str2int(args.c_str())) {
 
     default:
-      std::cerr << "wrong attribute: \"" << args
-                << "\" not in data DataProvider";
+      C_ERROR("wrong attribute: \"", args, "\" not in data DataProvider");
       throw "wrong attribute: \"" + args + "\" not in data DataProvider";
       break;
     }
@@ -135,7 +134,7 @@ DataProvider::from_stream_sc(std::istream &is,
                              CompoMe::Serialization_context_import &p_ctx) {
   char l_c = is.get();
   if (l_c != '{') {
-    std::cerr << "Wrong start: '" << l_c << "' != '{'";
+    C_ERROR("Wrong start: '", l_c, "' != '{'");
     throw "Wrong start: '"
           "' != '{'";
   }
@@ -147,8 +146,7 @@ DataProvider::from_stream_sc(std::istream &is,
     switch (str2int(args.c_str())) {
 
     default:
-      std::cerr << "wrong attribute: \"" << args
-                << "\" not in data DataProvider";
+      C_ERROR("wrong attribute: \"", args, "\" not in data DataProvider");
       throw "wrong attribute: \"" + args +
           "\" not in sub components DataProvider";
       break;
@@ -160,15 +158,14 @@ DataProvider::from_stream_sc(std::istream &is,
   return is;
 }
 
-std::istream &
-DataProvider::from_stream(std::istream &is,
-                          CompoMe::Serialization_context_import &p_ctx) {
+void DataProvider::from_stream(std::istream &is,
+                               CompoMe::Serialization_context_import &p_ctx) {
   DataProvider l_reset;
   *this = l_reset;
 
   char l_c = is.get();
   if (l_c != '{') {
-    std::cerr << "Wrong start: '" << l_c << "' != '{'";
+    C_ERROR("Wrong start: '", l_c, "' != '{'");
     throw "Wrong start: '"
           "' != '{'";
   }
@@ -210,7 +207,7 @@ DataProvider::from_stream(std::istream &is,
     }
 
     default: {
-      std::cerr << "wrong attribute: \"" << args << "\" not in DataProvider";
+      C_ERROR("wrong attribute: \"", args, "\" not in DataProvider");
       throw "wrong attribute: \"" + args + "\" not in DataProvider";
       break;
     }
@@ -220,7 +217,7 @@ DataProvider::from_stream(std::istream &is,
   } while (l_c == ',');
 
   if (l_c != '}') {
-    std::cerr << "Wrong end: '" << l_c << "' != '}'" << std::endl;
+    C_ERROR("Wrong end: '", l_c, "' != '}'");
     throw "Wrong end";
   }
 
@@ -242,7 +239,7 @@ DataProvider::from_stream(std::istream &is,
   //   throw "Wrong end";
   // }
 
-  return is;
+  //    return is;
 }
 
 } // namespace Config

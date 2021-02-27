@@ -2,7 +2,6 @@
 
 #include "Components/CompoMe/Config/DataProvider_AccessData_access.hpp"
 #include "Components/CompoMe/Config/DataProvider.hpp"
-#include "CompoMe/Log.hpp"
 
 namespace CompoMe {
 

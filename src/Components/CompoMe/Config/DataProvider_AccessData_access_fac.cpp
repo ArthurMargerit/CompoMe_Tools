@@ -2,6 +2,8 @@
 
 #include "Components/CompoMe/Config/DataProvider.hpp"
 #include "Components/CompoMe/Config/DataProvider_AccessData_access.hpp"
+#include <cstdlib>
+#include <string>
 
 namespace CompoMe {
 
@@ -25,7 +27,7 @@ std::istream &DataProvider_AccessData_access::from_stream(
     std::istream &is, CompoMe::Serialization_context_import &p_ctx) {
   char l_c = is.get();
   if (l_c != '{') {
-    std::cerr << "Wrong start: '" << l_c << "' != '{'";
+    C_ERROR("Wrong start: '", l_c, "' != '{'");
     throw "Wrong start: '"
           "' != '{'";
   }
@@ -44,8 +46,8 @@ std::istream &DataProvider_AccessData_access::from_stream(
     }
 
     default:
-      std::cerr << "wrong attribute: \"" << args
-                << "\" not in provide DataProvider_AccessData_access";
+      C_ERROR("wrong attribute: \"", args,
+              "\" not in provide DataProvider_AccessData_access");
       throw "wrong attribute: \"" + args +
           "\" not in provide DataProvider_AccessData_access";
       break;

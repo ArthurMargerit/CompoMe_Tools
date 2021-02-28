@@ -1,3 +1,4 @@
 .*DBUS.*
 .*\.BASE.*
-GEN:.*CompoMe::Config::DataProvider.*
+GEN:.*CompoMe::Config::DataProvider$
+GEN:.*CompoMe::Config::DataProvider.*PROVIDE.*$

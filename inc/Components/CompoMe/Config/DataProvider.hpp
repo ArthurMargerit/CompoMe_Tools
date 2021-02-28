@@ -30,9 +30,7 @@ namespace Config {
 class DataProvider : public CompoMe::Component {
 
 public:
-  std::map<CompoMe::String,CompoMe::String> & a_values() {
-    return values;
-  }
+  std::map<CompoMe::String, CompoMe::String> &a_values() { return values; }
 
   // Contructor / Destructor
   DataProvider();
@@ -74,12 +72,10 @@ private:
                                     CompoMe::Serialization_context_import &);
 
 public:
-  std::ostream &
-  to_stream(std::ostream &os,
-            CompoMe::Serialization_context_export &p_ctx) const override;
-  std::istream &
-  from_stream(std::istream &is,
-              CompoMe::Serialization_context_import &p_ctx) override;
+  void to_stream(std::ostream &os,
+                 CompoMe::Serialization_context_export &p_ctx) const override;
+  void from_stream(std::istream &is,
+                   CompoMe::Serialization_context_import &p_ctx) override;
 
   // INTERFACE ////////////////////////////////////////////////////////////////
   // PROVIDE
@@ -89,7 +85,7 @@ private:
   // REQUIRE MULTI
 
   // DATA /////////////////////////////////////////////////////////////////////
-  std::map< CompoMe::String , CompoMe::String > values;
+  std::map<CompoMe::String, CompoMe::String> values;
   // SUB COMPONENT ////////////////////////////////////////////////////////////
 
   // SUB CONNECTOR ////////////////////////////////////////////////////////////

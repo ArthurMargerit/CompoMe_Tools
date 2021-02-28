@@ -13,6 +13,8 @@ class DataProvider;
 
 class DataProvider_AccessData_access : public ::CompoMe::Config::AccessData {
 public:
+  DataProvider *composant;
+
   //! Default constructor
   DataProvider_AccessData_access(DataProvider *comp);
 
@@ -53,7 +55,6 @@ public:
 
 private:
   DataProvider &get_c() const;
-  DataProvider *composant;
 
   ///////////////////////////////////////////////////////////////////////////
   //                                  DATA                                 //

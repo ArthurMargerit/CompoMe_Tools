@@ -1,11 +1,7 @@
 #include "Components/CompoMe/Config/DataProvider_fac.hpp"
 #include "Components/CompoMe/Config/DataProvider.hpp"
 
-#include <cstdlib>
-#include <string>
-#include <utility>
-
-#include "CompoMe/Log.hpp"
+#include <iostream>
 
 namespace CompoMe {
 
@@ -37,8 +33,9 @@ DataProvider_fac::build(const std::string &p_type, std::istream &p_stream,
     return f->second.first(p_type, p_stream, p_ctx);
   }
 
-  C_ERROR("Error: of Serializable* build ", "Your type \"", p_type,
-          "\" is not include or not init as a child.");
+  std::cerr << "Error: of Serializable* build "
+            << "Your type \"" << p_type
+            << "\" is not include or not init as a child." << std::endl;
 
   return NULL;
 }
@@ -58,8 +55,9 @@ DataProvider_fac::build_sp(const std::string &p_type, std::istream &p_stream) {
     return f->second.second(p_type, p_stream);
   }
 
-  C_ERROR("Error: of std::shared_ptr<CompoMe::Config::DataProvider> build ",
-          "Your type \"", p_type, "\" is not include or not init as a child.");
+  std::cerr << "Error: of std::shared_ptr<CompoMe::Config::DataProvider> build "
+            << "Your type \"" << p_type
+            << "\" is not include or not init as a child." << std::endl;
 
   return std::shared_ptr<CompoMe::Config::DataProvider>();
 }

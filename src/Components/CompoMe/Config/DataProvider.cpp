@@ -7,8 +7,7 @@ namespace CompoMe {
 
 namespace Config {
 
-DataProvider::DataProvider()
-    : CompoMe::Component() /* PROVIDE */, access(this) {
+DataProvider::DataProvider() : /* PROVIDE */ access(this) {
   C_INFO_TAG("CONST: DataProvider", "Component,DataProvider");
   return;
 }
@@ -53,7 +52,7 @@ void DataProvider::step() {
   Component::step();
   C_INFO_TAG("STEP: DataProvider", "Component,DataProvider");
 
-  // step: receiver process// step: sub_componentreturn;
+  // step: sub_componentreturn;
 }
 
 void DataProvider::stop() {

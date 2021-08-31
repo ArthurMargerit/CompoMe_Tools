@@ -3,30 +3,31 @@
 #include <iostream>
 
 namespace CompoMe {
-  namespace Tools {
-    std::string C_readline(std::string prompt) {
-      while (true) {
+namespace Tools {
+std::string C_readline(std::string prompt) {
+  while (true) {
 
-        std::string cmd;
+    std::string cmd;
 
-        std::cout << prompt << "\n";
-        std::getline (std::cin, cmd);
+    std::cout << prompt << std::flush;
+    std::getline(std::cin, cmd);
 
-        std::cout << "|" << cmd << "|" << "\n";
+    std::cout << "|" << cmd << "|"
+              << "\n";
 
-        if (cmd == "") {
-           return "exit";
-        }
-
-        if (cmd != "") {
-          // add_history(cmd);
-        } else {
-          continue;
-        }
-
-        // free(cmd);
-        return cmd;
-      }
+    if (cmd == "") {
+      return "exit";
     }
-  } // Tools
-} // CompoMe
+
+    if (cmd != "") {
+      // add_history(cmd);
+    } else {
+      continue;
+    }
+
+    // free(cmd);
+    return cmd;
+  }
+}
+} // namespace Tools
+} // namespace CompoMe

@@ -37,6 +37,16 @@ public:
 };
 } // namespace
 
+call_result call(Caller_stream *c, std::map<std::string, Caller_stream *> &cm,
+                 std::string cmd) {
+
+  if (cmd[0] == '/') {
+    return call(cm, cmd);
+  } else {
+    return call(c, cmd);
+  }
+}
+
 call_result call(Caller_stream *c, std::string cmd) {
   if (c == nullptr) {
     return {false, "Caller_stream is nullptr, then no call can be perform"};

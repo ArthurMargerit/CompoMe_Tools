@@ -1,4 +1,5 @@
 #include "CompoMe/Tools/Call.hpp"
+#include "Errors/Error.hpp"
 #include "Interfaces/Function_stream_recv.hpp"
 #include "Interfaces/Return_stream_send.hpp"
 
@@ -57,8 +58,20 @@ call_result call(Caller_stream *c, std::string cmd) {
 
   f.reset();
   f.set_str(cmd);
-  bool l_result = c->call(f, r);
-  return {l_result, (l_result) ? r.get_str() : "... Wrong form ..."};
+  try {
+    bool l_result = c->call(f, r);
+    return {l_result, (l_result) ? r.get_str() : "... Wrong form ..."};
+  } catch (std::exception &e) {
+    return {false, e.what()};
+  } catch (const char *&e) {
+    return {false, e};
+  } catch (char const *&e) {
+    return {false, e};
+  } catch (CompoMe::Error *e) {
+    return {false, e->to_string()};
+  } catch (CompoMe::Error &e) {
+    return {false, e.to_string()};
+  }
 }
 
 call_result call(std::map<std::string, Caller_stream *> &c, std::string cmd) {
